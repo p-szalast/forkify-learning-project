@@ -11,10 +11,6 @@ import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import bookmarksView from './views/bookmarksView.js';
 
-// if (module.hot) {
-//   module.hot.accept();
-// }
-
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
@@ -112,8 +108,7 @@ const controlAddRecipe = async function (newRecipe) {
     bookmarksView.render(model.state.bookmarks); // for new elements always render not update
 
     //Change ID in URL
-    window.history.pushState(null, '', `#${model.state.recipe.id}`); //state, title, URL
-    // window.history.back(); // when clicking back and towards buttons in browser
+    window.history.pushState(null, '', `#${model.state.recipe.id}`);
 
     //Close form window
     setTimeout(function () {
@@ -124,7 +119,7 @@ const controlAddRecipe = async function (newRecipe) {
     addRecipeView.renderError(err.message);
   }
 
-  location.reload(); // reload
+  location.reload();
 };
 
 const init = function () {
